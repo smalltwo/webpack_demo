@@ -7,13 +7,12 @@ var webpack = require('webpack')
 
 var config = {
     entry: {
-        home: './home',
-        about: './about'
+        first: './src/pages/index.js'
     },
     output: {
 
         path: __dirname + "/dist",
-        filename: "[name]-[chunkhash:8].js"
+        filename: "[name]-bundle.js"
     },
     module: {
         noParse: '',
@@ -25,9 +24,6 @@ var config = {
             }
         ]
     },
-    plugins: {
-
-    },
     resolve: {
         extensions: ["", ".js", ".scss"],
         alias: {
@@ -38,7 +34,10 @@ var config = {
     debug: true,
     devtool: "eval-source-map",
     devServer: {
-        contentBase: "./src"
+        contentBase: "./src",
+        inline: true,
+        hot: true,
+        port: 8080,
     }
 }
 
