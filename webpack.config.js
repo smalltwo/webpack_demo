@@ -7,39 +7,35 @@ var webpack = require('webpack')
 
 var config = {
     entry: {
-        home: './home',
-        about: './about'
+        first: ['./src/index.js']
     },
     output: {
 
         path: __dirname + "/dist",
-        filename: "[name]-[chunkhash:8].js"
+        publicPath: "",
+        filename: "[name]-bundle.js"
     },
     module: {
         noParse: '',
         loaders: [
             {
-                test: /\.js$/,
-                exclude: ['node_modules'],
-                loader: 'babel',
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                loader: 'babel'
             }
         ]
     },
-    plugins: {
-
+    devServer: {
+        contentBase: 'dist',
+        port: 8080,
+        inline: true,
     },
     resolve: {
-        extensions: ["", ".js", ".scss"],
-        alias: {
-
-        },
+        extensions: ["", ".js", ".scss"]
 
     },
     debug: true,
-    devtool: "eval-source-map",
-    devServer: {
-        contentBase: "./src"
-    }
+    devtool: "eval-source-map"
 }
 
-module.export = config
+module.exports = config
