@@ -21,7 +21,8 @@ yarn*
 
 # Build
 #
-dist/
+dist/*.js
+dist/*.json
 
 
 # OSX
